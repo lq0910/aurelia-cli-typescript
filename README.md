@@ -1,4 +1,4 @@
-# `aurelia-cli-typescript template`
+# `aurelia-cli-typescript template---lq`
 
 This project is bootstrapped by [aurelia-cli-typescript](https://github.com/lq0910/aurelia-cli-typescript).
 
