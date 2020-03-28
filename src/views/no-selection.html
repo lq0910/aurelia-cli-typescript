@@ -1,5 +1,78 @@
 <template>
   <div class="no-selection text-center">
     <h2>${message}</h2>
+
   </div>
+  <div class="row">
+    Fixed tabs:
+    <ul md-tabs class="z-depth-1">
+      <li md-waves="color: primary;"><a class="active" href="#tab21">Tab 1</a></li>
+      <li md-waves="color: primary;"><a href="#tab22">Tab 2</a></li>
+    </ul>
+  </div>
+  <div id="tab21" class="tab-content z-depth-1">
+    <p>
+      This is tab 1
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.
+    </p>
+  </div>
+  <div id="tab22" class="tab-content z-depth-1">
+    <p>
+      This is tab 2
+    </p>
+    <p>
+      Nunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.
+    </p>
+  </div>
+
+  <md-card title="Card title">
+
+    <form role="form">
+      <div class="form-group">
+        <label class="col-sm-3 col-form-label">First Name</label>
+        <div class="col-sm-9">
+          <input type="text" placeholder="first name" class="form-control" value.bind="contact.firstName">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 col-form-label">Last Name</label>
+        <div class="col-sm-9">
+          <input type="text" placeholder="last name" class="form-control" value.bind="contact.lastName">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-9">
+          <input type="text" placeholder="email" class="form-control" value.bind="contact.email">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 col-form-label">Phone Number</label>
+        <div class="col-sm-9">
+          <input type="text" placeholder="phone number" class="form-control" value.bind="contact.phoneNumber">
+        </div>
+      </div>
+    </form>
+  </md-card>
+  <p style="text-align:center">
+    <button md-button click.trigger="showDefaultToast()">default toast</button>
+    <a md-button class="modal-trigger" href="#modal1">show modal (href with ID)</a>
+  </p>
+
+  <div id="modal1" md-modal md-modal.ref="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a click.delegate="agree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Agree</a>
+      <a click.delegate="disagree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Disagree</a>
+    </div>
+  </div>
+  
 </template>

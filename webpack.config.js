@@ -26,7 +26,7 @@ const cssRules = [
 ];
 
 
-module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, host } = {}) => ({
+module.exports = ({ production } = {}, { extractCss, analyze, tests, hmr, port, host } = {}) => ({
   resolve: {
     extensions: ['.ts', '.js'],
     modules: [srcDir, 'node_modules'],
@@ -41,9 +41,9 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
   output: {
     path: outDir,
     publicPath: baseUrl,
-    filename: production ? '[name].[chunkhash].bundle.js' : '[name].[hash].bundle.js',
-    sourceMapFilename: production ? '[name].[chunkhash].bundle.map' : '[name].[hash].bundle.map',
-    chunkFilename: production ? '[name].[chunkhash].chunk.js' : '[name].[hash].chunk.js'
+    filename: production ? 'js/[name].[chunkhash].bundle.js' : 'js/[name].[hash].bundle.js',
+    sourceMapFilename: production ? 'js/[name].[chunkhash].bundle.map' : 'js/[name].[hash].bundle.map',
+    chunkFilename: production ? 'js/[name].[chunkhash].chunk.js' : 'js/[name].[hash].chunk.js'
   },
   optimization: {
     runtimeChunk: true,  // separates the runtime chunk, required for long term cacheability
@@ -139,9 +139,11 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
       { test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/i, loader: 'url-loader', options: { limit: 10000, mimetype: 'application/font-woff' } },
       // load these fonts normally, as files:
       { test: /\.(ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/i, loader: 'file-loader' },
-      { test: /environment\.json$/i, use: [
-        {loader: "app-settings-loader", options: {env: production ? 'production' : 'development' }},
-      ]},
+      {
+        test: /environment\.json$/i, use: [
+          { loader: "app-settings-loader", options: { env: production ? 'production' : 'development' } },
+        ]
+      },
       ...when(tests, {
         test: /\.[jt]s$/i, loader: 'istanbul-instrumenter-loader',
         include: srcDir, exclude: [/\.(spec|test)\.[jt]s$/i],

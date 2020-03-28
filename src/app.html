@@ -1,25 +1,93 @@
 <template>
+  <!-- <require from="./views/contact-list"></require> -->
+  <require from="materialize-css/dist/css/materialize.css"></require>
   <require from="./styles/styles.css"></require>
-  <require from="./views/contact-list"></require>
 
-  <nav class="navbar navbar-light bg-light fixed-top" role="navigation">
+  <md-colors primary-color.bind="primaryColor" secondary-color.bind="secondaryColor" error-color.bind="errorColor"
+    success-color.bind="successColor" link-color.bind="linkColor"></md-colors>
+
+  <loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
+  <style>
+    .nav-wrapper {
+      margin: 0 auto;
+      max-width: 1280px;
+    }
+    /*.primary-text {
+      color: ${primaryTextColor};
+    }
+
+    .secondary-text {
+      color: ${primaryTextColor};
+    }*/
+  </style>
+  <!-- <nav class="navbar navbar-light bg-light fixed-top" role="navigation">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">
         <i class="fa fa-user"></i>
-        <span>Contacts</span>
+        <span>DEMO</span>
         <h1>${message}</h1>
       </a>
     </div>
-  </nav>
+  </nav> -->
+  <md-navbar>
+    <a md-sidenav-collapse="ref.bind: sideNav;" class="left hide-on-large-only" style="cursor: pointer;padding: 0 10px;"><i class="material-icons">menu</i></a>
+    <a href="#/samples/navbar" class="brand-logo">
+      <span>Brand logo</span>
+    </a>
+    <ul class="hide-on-med-and-down right">
+      <li md-waves class="active"><a>About</a></li>
+      <li md-waves><a>Installation</a></li>
+      <!-- Dropdown Trigger -->
+      <li><a md-dropdown="activates: dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </md-navbar>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a click.trigger="showToast($event)">one</a></li>
+    <li><a click.trigger="showToast($event)">two</a></li>
+    <li class="divider"></li>
+    <li><a click.trigger="showToast($event)">three</a></li>
+  </ul>
 
-  <loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
+  <!-- left sidenav -->
+  <md-sidenav view-model.ref="sideNav">
+    <ul>
+      <li md-waves><a href="#">About</a></li>
+      <li md-waves><a href="#">Installation</a></li>
+      <li md-waves><a href="#">Project Status</a></li>
+      <li md-waves><a href="#">Help/Docs</a></li>
+    </ul>
+  </md-sidenav>
 
   <div class="container">
     <div class="row" style="margin-top: 80px;">
-      <contact-list class="col-md-4"></contact-list>
-      <router-view class="col-md-8"></router-view>
+      <!-- <contact-list class="col-md-4"></contact-list> -->
+      <router-view class="col-md-12"></router-view>
     </div>
   </div>
+
+  <footer md-footer style="padding-top:0">
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+    <div class="footer-copyright">
+      <div class="container">
+        © 2020 Copyright Text
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
 </template>
-
-

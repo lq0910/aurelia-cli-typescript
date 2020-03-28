@@ -21,8 +21,8 @@
     }
   },
   "platform": {
-    "hmr": false,
-    "open": false,
+    "hmr": true,
+    "open": true,
     "port": 6188,
     "host": "localhost",
     "output": "dist"
